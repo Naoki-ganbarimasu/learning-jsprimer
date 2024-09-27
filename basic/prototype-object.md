@@ -62,7 +62,7 @@ console.log("toString" in obj); // => true
 
 ## オブジェクトの継承元を明示する`Object.create`メソッド
 
-これまで、オブジェクトリテラルは`Object.prototype`オブジェクトを自動的に継承したオブジェクトを作成していた。  
+これまで、オブジェクトリテラルは`Object.prototype`オブジェクトを自動的に継承したオブジェクトを作成している。  
 オブジェクトリテラルで作成する新しいオブジェクトは、`Object.create`メソッドを使うことで次のように書ける。
 
 ```javascript
