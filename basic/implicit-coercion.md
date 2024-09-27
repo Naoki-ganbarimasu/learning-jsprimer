@@ -40,8 +40,6 @@ console.log(10 == ["10"]); // => true
 
 ## さまざまな暗黙的な型変換
 
-他の演算子についても、具体的な例を見てみましょう。
-
 次のコードでは、数値の1と文字列の"2"をプラス演算子で処理する。プラス演算子（+）は、数値の加算と文字列の結合を両方実行できるように多重定義されている。このケースでは、JavaScriptは文字列の結合を優先する仕様となっている。そのため、数値の1を文字列の"1"へ暗黙的に変換してから、文字列結合する。
 
 ```javascript
@@ -70,7 +68,7 @@ Boolean(""); // => false
 Boolean(null); // => false
 ```
 
-JavaScriptでは、次の値はfalseへ変換されます。
+JavaScriptでは、次の値はfalseへ変換される。
 
 - false
 - undefined
@@ -103,7 +101,7 @@ String(function() {}); // "function() {}"
 "文字列と" + Symbol("シンボルの説明"); // => TypeError: can't convert symbol to string
 ```
 
-この問題もStringコンストラクタ関数を使うことで、シンボルを明示的に文字列化することで解決できます。
+この問題もStringコンストラクタ関数を使うことで、シンボルを明示的に文字列化することで解決できる。
 
 ```javascript
 "文字列と" + String(Symbol("シンボルの説明")); // => "文字列とSymbol(シンボルの説明)"
