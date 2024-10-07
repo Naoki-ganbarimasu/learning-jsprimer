@@ -246,7 +246,7 @@ console.log(say.apply(person, ["こんにちは"])); // => "こんにちは Bren
 say("こんにちは"); // => TypeError: Cannot read property 'fullName' of undefined
 ```
 
-`this`に person オブジェクトを指定した状態で `say` 関数を呼び出しています。 `apply` メソッドの第二引数で指定した配列は、自動的に展開されて say 関数の仮引数`message`に入ります。
+`this`に person オブジェクトを指定した状態で `say` 関数を呼び出している。 `apply` メソッドの第二引数で指定した配列は、自動的に展開されて say 関数の仮引数`message`に入る。
 
 ```js
 "use strict";
@@ -317,7 +317,7 @@ call、apply、bind メソッドを使うことで this を明示的に指定し
 
 コールバック関数の中で this を参照すると問題となる場合がある。メソッドの中で Array の map メソッドなどのコールバック関数を扱う場合に発生しやすい。
 
-次のコードでは prefixArray メソッドの中で map メソッドを使っています。 このとき、map メソッドのコールバック関数の中で、Prefixer オブジェクトを参照するつもりで this を参照しています。
+次のコードでは prefixArray メソッドの中で map メソッドを使っている。 このとき、map メソッドのコールバック関数の中で、Prefixer オブジェクトを参照するつもりで this を参照している。
 
 ```js
 "use strict";
