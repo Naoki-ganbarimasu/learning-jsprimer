@@ -24,7 +24,6 @@ try {
   console.log("finally節: この行は実行される");
 }
 ```
-````
 
 ## throw 文
 
@@ -42,7 +41,7 @@ try {
 
 ## エラーオブジェクト
 
-`throw`文ではエラーオブジェクトを例外として投げることができる。ここでは、`throw`文で例外として投げられるエラーオブジェクトについて見ていきます。
+`throw`文ではエラーオブジェクトを例外として投げることができる。ここでは、`throw`文で例外として投げられるエラーオブジェクトについて見ていく。
 
 ### Error
 
@@ -95,22 +94,19 @@ try {
 }
 ```
 
-以下は、上記のコードと説明をマークダウン形式に書き直したものである。
-
-```markdown
 # TypeError
 
 `TypeError`は、値が期待される型ではない場合のエラーである。次のコードでは、関数ではないオブジェクトを関数呼び出ししているため、`TypeError`例外が投げられる。
 
 ```javascript
 try {
-    // 関数ではないオブジェクトを関数として呼び出す
-    const fn = {};
-    fn();
+  // 関数ではないオブジェクトを関数として呼び出す
+  const fn = {};
+  fn();
 } catch (error) {
-    console.log(error instanceof TypeError); // => true
-    console.log(error.name); // => "TypeError"
-    console.log(error.message); // エラーメッセージが表示される
+  console.log(error instanceof TypeError); // => true
+  console.log(error.name); // => "TypeError"
+  console.log(error.message); // エラーメッセージが表示される
 }
 ```
 
@@ -118,50 +114,49 @@ try {
 
 ビルトインエラーのインスタンスを作成し、そのインスタンスを例外として投げることもできる。通常の`Error`オブジェクトと同じように、それぞれのビルトインエラーオブジェクトを`new`してインスタンスを作成できる。
 
-
 ```javascript
 // 文字列を反転する関数
 function reverseString(str) {
-    if (typeof str !== "string") {
-        throw new TypeError(`${str} is not a string`);
-    }
-    return Array.from(str).reverse().join("");
+  if (typeof str !== "string") {
+    throw new TypeError(`${str} is not a string`);
+  }
+  return Array.from(str).reverse().join("");
 }
 
 try {
-    // 数値を渡す
-    reverseString(100);
+  // 数値を渡す
+  reverseString(100);
 } catch (error) {
-    console.log(error instanceof TypeError); // => true
-    console.log(error.name); // => "TypeError"
-    console.log(error.message); // => "100 is not a string"
+  console.log(error instanceof TypeError); // => true
+  console.log(error.name); // => "TypeError"
+  console.log(error.message); // => "100 is not a string"
 }
 ```
 
 ## エラーとデバッグ
 
-JavaScript開発において、デバッグ中に発生したエラーを理解することは非常に重要である。エラーが持つ情報を活用することで、ソースコードのどこでどのような例外が投げられたのかを知ることができる。
+JavaScript 開発において、デバッグ中に発生したエラーを理解することは非常に重要である。エラーが持つ情報を活用することで、ソースコードのどこでどのような例外が投げられたのかを知ることができる。
 
-エラーはすべて`Error`オブジェクトを拡張したオブジェクトで宣言されています。つまり、エラーの名前を表す`name`プロパティと内容を表す`message`プロパティを持っています。この2つのプロパティを確認することで、多くの場面で開発に役立つ。
+エラーはすべて`Error`オブジェクトを拡張したオブジェクトで宣言されています。つまり、エラーの名前を表す`name`プロパティと内容を表す`message`プロパティを持っています。この 2 つのプロパティを確認することで、多くの場面で開発に役立つ。
 
 次のコードでは、`try...catch`文で囲っていない部分で例外が発生している。
 
 ```javascript
 function fn() {
-    // 存在しない変数を参照する
-    x++;
+  // 存在しない変数を参照する
+  x++;
 }
 fn();
 ```
 
-### console.errorとスタックトレース
+### console.error とスタックトレース
 
 `console.error`メソッドでは、メッセージと合わせてスタックトレースをコンソールへ出力できる。
 
 ```javascript
 function fn() {
-    console.log("メッセージ");
-    console.error("エラーメッセージ");
+  console.log("メッセージ");
+  console.error("エラーメッセージ");
 }
 
 fn();
@@ -169,25 +164,25 @@ fn();
 
 ## [ES2022] Error Cause
 
-ES2022で追加された`Error`の`cause`オプションを使用することで、再度エラーを投げる際にも本来のエラーのスタックトレースを保持できる。
+ES2022 で追加された`Error`の`cause`オプションを使用することで、再度エラーを投げる際にも本来のエラーのスタックトレースを保持できる。
 
 ```javascript
 // 数字の文字列を二つ受け取り、合計を返す関数
 function sumNumStrings(a, b) {
-    try {
-        const aNumber = safeParseInt(a);
-        const bNumber = safeParseInt(b);
-        return aNumber + bNumber;
-    } catch (e) {
-        throw new Error("Failed to sum a and b", { cause: e });
-    }
+  try {
+    const aNumber = safeParseInt(a);
+    const bNumber = safeParseInt(b);
+    return aNumber + bNumber;
+  } catch (e) {
+    throw new Error("Failed to sum a and b", { cause: e });
+  }
 }
 
 try {
-    // 数値にならない文字列 'string' を渡しているので例外が投げられる
-    sumNumStrings("string", "2");
+  // 数値にならない文字列 'string' を渡しているので例外が投げられる
+  sumNumStrings("string", "2");
 } catch (err) {
-    console.error(err);
+  console.error(err);
 }
 ```
 
